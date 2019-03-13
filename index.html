@@ -36,15 +36,15 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- jumbotron -->
-        <div class="jumbotron" style="background-color:black; color:white">
-            <div class="container">
-                <h1 class="display-4">LifeBound Train Schedule</h1>
-                <p class="lead">The trains always arrive at your station. The question is which one to take?</p>
-            </div>
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid" style="background-color:black; color:white">
+        <div class="container">
+            <h1 class="display-4 centered">LifeBound Train Schedule</h1>
+            <p class="lead centered">The trains always arrive at your station. Which one will you take?</p>
         </div>
+    </div>
 
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <!-- card -->
@@ -93,14 +93,12 @@
                         </div>
 
                         <div class="input-row">
-                            <!-- time validation -->
                             <label for="trainTime">Time of First Train in military format (HH:mm) </label><br>
                             <div id="alertTime">Example: 1:30 PM becomes 13:40.</div>
                             <input type="text" class="inputBox" id="trainTime" required>
                         </div>
 
                         <div class="input-row">
-                            <!-- TODO IF NO FREQUENCY SPECIFIED, DEFAULT TO 1 TIME TRAIN -->
                             <label for="trainFreq">Train Frequency</label><br>
                             <input type="text" class="inputBox" id="trainFreq" required>
                         </div>

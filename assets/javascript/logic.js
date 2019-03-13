@@ -45,12 +45,6 @@ $("#submitButton").on("click", function (event) {
             document.querySelector('.alert').style.display = 'none';
         },3000);
 
-        // Logs everything to console
-        // console.log(newTrain.name);
-        // console.log(newTrain.dest);
-        // console.log(newTrain.time);
-        // console.log(newTrain.freq);
-
         // Clears all of the text-boxes
         document.getElementById('trainForm').reset();
     } else {      
@@ -65,7 +59,6 @@ $("#submitButton").on("click", function (event) {
   });
 
   // 3. Create Firebase event for adding a train to the database 
-  // so that we can populate the html with new train 
   database.ref("/trains").on("child_added", function(childSnapshot) {
 
     // Store everything into a variable.
@@ -73,12 +66,6 @@ $("#submitButton").on("click", function (event) {
     let trainDest = childSnapshot.val().dest;
     let trainTime  = childSnapshot.val().time;
     let trainFreq = childSnapshot.val().freq;
-
-    // Train Info
-    // console.log(trainName);
-    // console.log(trainDest);
-    // console.log(trainTime);
-    // console.log(trainFreq);
 
     // Calculate the next trains arrival and how many minutes away it is
     let response = getTrainTime(trainTime,trainFreq)
@@ -95,9 +82,6 @@ $("#submitButton").on("click", function (event) {
     // Append the new row to the table
     $("#train-table > tbody").append(newRow);
   });
-
-
-
 
   function getTrainTime(trainTime, trainFreq) {
 
