@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Schedule</title>
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+    <!-- Added link to css and styling -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+    <!-- Added link to the jQuery Library -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+
+    <!-- Link to Moment.js should go here -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="http://momentjs.com/downloads/moment-timezone-with-data-2012-2022.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- jumbotron -->
+        <div class="jumbotron" style="background-color:black; color:white">
+            <div class="container">
+                <h1 class="display-4">LifeBound Train Schedule</h1>
+                <p class="lead">The trains always arrive at your station. The question is which one to take?</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- card -->
+                <div class="card">
+                    <div class="card-header">
+                        Current Train Schedule
+                    </div>
+                    <div class="card-body">
+                        <!-- table -->
+                        <table class="table table-sm table-hover" id='train-table'>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- populated from db at runtime-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- card -->
+                <div class="card">
+                    <div class="card-header">
+                        Add a Train
+                    </div>
+                    <div class="card-body">
+                        <!-- form -->
+                        <form id="trainForm">
+                            <div class="alert">A train has been added.</div>
+
+                            <div class="form-group">
+                                <label for="trainName">Train Name</label>
+                                <input type="text" class="form-control" id="trainName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trainDest">Destination</label>
+                                <input type="text" class="form-control" id="trainDest" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trainTime">First Train Time (HH:mm military time)</label>
+                                <!-- TODO: convert time to military time and validate it -->
+                                <input type="datetime-local" step="min" value="2017-06-01T08:30" class="form-control" id="trainTime" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trainFreq">Frequency (mins)</label>
+                                <input type="text" class="form-control" id="trainFreq">
+                                <!-- TODO IF NO FREQUENCY SPECIFIED, DEFAULT TO 1 TIME TRAIN -->
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right" id="submitButton">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/javascript/logic.js" type="text/javascript"></script>
+</body>
+
+</html>
